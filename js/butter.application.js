@@ -645,7 +645,7 @@
               $ioVideoDesc.val( project.description );
 
 
-            }, true );
+            });
           },
 
           loadWorkspace: function( tracks ) {
@@ -943,6 +943,7 @@
               }
             });
 
+            // Set video time and scrubber to 0
             $popcorn.video.currentTime = 0;
             TrackEditor.moveScrubberToPosition( 0 );
 
