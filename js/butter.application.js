@@ -577,7 +577,7 @@
 
     //   TrackMeta Module - define
 
-    TrackMeta   = ( function() {
+    TrackMeta = ( function() {
 
       return {
 
@@ -645,7 +645,7 @@
               $ioVideoDesc.val( project.description );
 
 
-            });
+            }, true );
           },
 
           loadWorkspace: function( tracks ) {
@@ -944,7 +944,6 @@
             });
 
             $popcorn.video.currentTime = 0;
-
             TrackEditor.moveScrubberToPosition( 0 );
 
             //  Listen on timeupdates
@@ -1959,19 +1958,24 @@
         }
 
 
-
         //  Reload/update menu
         TrackMeta.menu.load( "#ui-user-videos" );
 
 
         if ( !autosaveTitle ) {
+
+          $popcorn.pause();
+
           //  Reload/update project
+          /*
           $("#ui-user-videos li[data-slug='"+ slug +"']").trigger( "click", {
 
             special: "Saving your project"
 
           });
+          */
 
+          alert( 'Project saved as "' + $ioVideoTitle.val() + '".' );
           autosaveEnabled = true;
 
         }
