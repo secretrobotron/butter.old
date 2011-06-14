@@ -644,7 +644,8 @@
                 // may need manifest help here
                 start: start,
                 end: end,
-                target: ui.draggable[ 0 ].id + "-container"
+                target: ui.draggable[ 0 ].id + "-container",
+                'target-object': ui.draggable[ 0 ].id + "-container",
               },
 
               defaults = PLUGIN_DEFAULTS[ ui.draggable[ 0 ].id ];
@@ -666,9 +667,9 @@
           var popcornTrack = $popcorn.getTrackEvent( options.id ) || $popcorn[ ui.draggable[ 0 ].id ]( popcornDefaults ).getTrackEvent( $popcorn.getLastTrackEventId() );
 
           showEventPreview( popcornTrack );
-        $popcorn.trigger( "timeupdate" );
-        $popcorn.video.currentTime += 0.0001;
-        $popcorn.trigger( "timeupdate" );
+          $popcorn.trigger( "timeupdate" );
+          $popcorn.video.currentTime += 0.0001;
+          $popcorn.trigger( "timeupdate" );
 
           return { left: left, innerHTML: ui.draggable[ 0 ].id, width: width, id: popcornTrack._id };
         } else {
