@@ -1093,15 +1093,15 @@
     //  Varying width listener
     $win.bind( "load resize", function () {
 
-      $body.dims = {
+       var bodyDims = {
         width: $body.width(),
         height: $body.height()
       };
 
       //  Set placement of loading icon
       $uiLoadingHtml.css({
-        left: ( $body.dims.width / 2 ) - 64,
-        top: ( $body.dims.height / 2 ) - 120,
+        left: ( window.innerWidth / 2 ) - 64,
+        top: ( window.innerHeight / 2 ) - 120,
         width: 130
       });
 
@@ -1117,18 +1117,11 @@
         stageWidth
       );
 
-      var $uiPanelPlugins = $("#ui-panel-plugins"),
-          outerWest = $(".outer-west").height(),
-          heightDiff = $("#ui-panel-video").height();
+      var westHeight = $(document.body).height() - $("#top-menu").height(),
+          videoPanelHeight = $("#ui-panel-video").height();
 
-      $uiPanelPlugins
-        .height( outerWest - heightDiff )
-          .css("margin-top", "5px");
-
-      $(".ui-command-panel div")
-        .height(
-          outerWest - heightDiff - ( 50 )
-        );
+      $(".outer-west").height( westHeight );
+      $("#ui-panel-plugins").height( westHeight - videoPanelHeight - 50 );
 
       //  Set Scrubber Height
       TrackEditor.setScrubberHeight();
@@ -2304,6 +2297,8 @@
       height: 435,
       open: function() {
 
+        $win.trigger("resize");
+        
         var $this = $(this),
             value = $this.children( "input" ).val();
 

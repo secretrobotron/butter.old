@@ -1,7 +1,14 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
 body {
   /*-webkit-user-select: none;
   -moz-user-select: none;*/
   padding-bottom: 20px;
+  width: 100%;
+  height: 100%;
 }
 
 video {
@@ -17,6 +24,11 @@ video {
   /*margin:10px auto;*/
   /*margin:10px 10px;*/
   /*display:block;*/
+}
+
+#ui-status-bar {
+  bottom: 0px;
+  height: 20px;
 }
 
 #ui-target-database-list {
@@ -181,8 +193,6 @@ width:500px;
 .leave{background-color: "#FFFFFF";}
 
 
-
-
 .ui-plugin-pane {
   /*float: left;
   background: #EEE;*/
@@ -191,16 +201,12 @@ width:500px;
   overflow: auto;
 }
 
-.ui-command-panel div {
-  /*height: 290px;*/
-  /*height:222px;*/
+#ui-panel-plugins {
   margin-top: 3px;
   background-color: #FFFFFF;
   border: 1px solid #111111;
-  padding-left: 15px;
   padding-top: 15px;
-  height: 525px;
-  overflow:auto;
+  overflow: auto;
 }
 
 #ui-scrubber-handle{
@@ -330,11 +336,6 @@ input.text, input.title {
   width: 370px;
   margin-right: 3px;
 }
-
-#ui-panel-plugins {
-  margin-top:-5px;
-}
-
 
 .sortable { 
 	list-style-type: none; 
