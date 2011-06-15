@@ -26,9 +26,22 @@ video {
   /*display:block;*/
 }
 
+#ui-track-editting {
+  position: absolute;
+  bottom: 10px;
+  height: 330px;
+}
+
 #ui-status-bar {
   bottom: 0px;
   height: 20px;
+}
+
+#ui-panel-preview {
+  overflow: hidden;
+}
+#ui-preview-container {
+  overflow: hidden;
 }
 
 #ui-target-database-list {
@@ -55,7 +68,7 @@ z-index:9995;
   border:1px solid #AAA;
   
   background: #eee; 
-  height:330px;
+  height: 330px;
   width:830px;
   /*margin:0 auto;*/
   /*margin:10px 0px;

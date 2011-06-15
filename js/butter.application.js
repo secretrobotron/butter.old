@@ -617,7 +617,7 @@
       if ( !$("#" + plugin + "-container").length ) {
 
         $("#ui-panel-preview").append("<li><div data-plugin="+ plugin +" id='"+ plugin +"-container' style='height: 255px;'></div></li>");
-        $("#"+ plugin +"-container").addClass("ui-widget-content ui-plugin-pane").parent().resizable();
+        $("#"+ plugin +"-container").addClass("ui-widget-content ui-plugin-pane");
       }
     };
 
@@ -1117,11 +1117,20 @@
         stageWidth
       );
 
-      var westHeight = $(document.body).height() - $("#top-menu").height(),
-          videoPanelHeight = $("#ui-panel-video").height();
+      var contentHeight = $(document.body).height() - $("#top-menu").height(),
+          videoPanelHeight = $("#ui-panel-video").height(),
+          eastHeight = $(".outer-center").height(),
+          $uiTrackEditting = $("#ui-track-editting"),
+          $uiPreviewContainer = $("#ui-preview-container"),
+          $uiPanelPreview = $("#ui-panel-preview"),
+          $uiPanelPlugins = $("#ui-panel-plugins");
 
-      $(".outer-west").height( westHeight );
-      $("#ui-panel-plugins").height( westHeight - videoPanelHeight - 50 );
+      $(".outer-west").height( contentHeight );
+      $uiPanelPlugins.height( contentHeight - videoPanelHeight - 50 );
+
+      var previewHeight = eastHeight - $uiTrackEditting.height() - 30;
+      $uiPreviewContainer.css( {"height": previewHeight + "px", "max-height": previewHeight + "px"});
+      $uiPanelPreview.css( {"height": previewHeight + "px", "max-height": previewHeight + "px"});
 
       //  Set Scrubber Height
       TrackEditor.setScrubberHeight();
