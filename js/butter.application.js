@@ -548,6 +548,8 @@
         $deleteBtn = $("#prjDelete"),
         $uiApplicationMsg = $("#ui-application-error"),
 
+        $uiImportWebpage = $("#ui-import-webpage"),
+
         trackMouseState = "mouseup",
 
         selectedEvent = null,
@@ -2323,6 +2325,10 @@
 
     //  UI Logic
 
+    $uiImportWebpage.dialog({
+      modal: true,
+      autoOpen: false,
+    });
 
     $uiStartScreen.dialog({
       modal: true,
