@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="butter.editor.css" />
+    <script type="text/javascript" src="butter.editor.js"></script>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript">
+      $(document).ready( function (e) {
+
+        var codeEditor = new PluginEditor({
+          type: "code",
+          editorViewportId: "viewport",
+
+          ready: function (e, iframe) {
+            codeEditor.init({
+              start: 0,
+              end: 0,
+            });
+          },
+
+          message: function ( message ) {
+          },
+
+          submit: function ( values ) {
+            console.log(values);
+          },
+        });
+
+      });
+    </script>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      #viewport {
+        width: 100%;
+        height: 90%;
+      }
+
+      #results {
+        width: 100%;
+        height: 10%;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="results"></textarea>
+    <div id="viewport">
+    </div>
+  </body>
+</html>

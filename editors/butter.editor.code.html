@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="butter.editor.css" />
+    <script type="text/javascript" src="butter.editor.js"></script>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript">
+      $(document).ready( function (e) {
+
+        var params = {
+          start: document.getElementById('param-start'),
+          end: document.getElementById('param-end'),
+          onStart: document.getElementById('param-onStart'),
+          onEnd: document.getElementById('param-onEnd'),
+          onFrame: document.getElementById('param-onFrame'),
+        };
+
+        var types = {
+          start: "string",
+          end: "string",
+          onStart: "function",
+          onEnd: "function",
+          onFrame: "function",
+        };
+
+        var defaults = {
+          start: 0,
+          end: 1,
+          onStart: function (options) {},
+          onEnd: function (options) {},
+          onFrame: function (options) {},
+        };
+
+        var values = {
+          start: defaults.start,
+          end: defaults.end,
+          onStart: defaults.onStart,
+          onEnd: defaults.onEnd,
+          onFrame: defaults.onFrame,
+        };
+
+        var client = new PluginEditorClient({
+
+          init: function ( options ) {
+
+            for ( var param in options ) {
+
+              if ( param in params ) {
+
+                $(params[param]).val( options[ param ] );
+              } //if
+            } //for
+          },
+
+          message: function ( message ) {
+
+
+          },
+        });
+
+        function validate ( showErrors ) {
+
+          for ( param in types ) {
+
+            if ( types[ param ] === "function" ) {
+
+              try {
+
+                var fn = new Function( "options", $(params[ param ]).val() );
+                
+              }
+              catch ( e ) {
+                
+                if ( showErrors ) {
+  
+                  alert( 'Error in ' + param + ': "' + e + '"' );
+                  return false;
+                } else {
+
+                  values[ param ] = defaults[ param ];                 
+                } //if
+              } //try
+
+            } //if
+          } //for  
+
+          return true;
+        };
+
+        $("#button-validate").click( function (e) {
+
+          validate( true );
+        });
+
+        $("#button-submit").click( function (e) {
+
+          client.submit( values );
+        });
+
+        $("#button-cancel").click( function (e) {
+
+          client.cancel();
+        });
+
+      });
+    </script>
+    <style>
+      html, body {
+        width: 98%;
+      }
+
+      label {
+        width: 100%;
+        display: block;
+        font-weight: bold;
+      }
+
+      textarea {
+        width: 99%;
+      }
+
+      input[type="text"] {
+        width: 99%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Code Editor</h1>
+    <form id="params">
+      <fieldset>
+        <p>
+          <label for="param-start">start</label>
+          <input type="text" name="param-start" id="param-start" />
+        </p>
+        <p>
+          <label for="param-end">end</label>
+          <input type="text" name="param-end" id="param-end">
+        </p>
+        <p>
+          <label for="param-onStart">onStart</label>
+          <textarea name="param-onStart" id="param-onStart"></textarea>
+        </p>
+        <p>
+          <label for="param-onEnd">onEnd</label>
+          <textarea name="param-onEnd" id="param-onEnd"></textarea>
+        </p>
+        <p>
+          <label for="param-onFrame">onFrame</label>
+          <textarea name="param-onFrame" id="param-onFrame"></textarea>
+        </p>
+      </fieldset>
+    </form>
+    <input type="button" id="button-validate" value="Validate" />
+    <input type="button" id="button-submit" value="Ok" />
+    <input type="button" id="button-cancel" value="Cancel" />
+  </body>
+</html>
