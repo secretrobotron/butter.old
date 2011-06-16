@@ -2326,9 +2326,30 @@
     //  UI Logic
 
     $uiImportWebpage.dialog({
+
       modal: true,
       autoOpen: false,
-    });
+      width: 500,
+      height: 300,
+
+      open: function () {
+        $(this).children( "input" ).val( "" );
+      },
+
+      buttons: {
+
+        "Import": function () {
+          $uiStartScreen.children( "#project-url" ).attr( "disabled", true );
+          $uiStartScreen.children( "#project-url" ).val( "Webpage: " + $(this).children( "input" ).val() );
+          $(this).dialog( "close" );
+        },
+        "Cancel": function () {
+          $(this).dialog( "close" );
+        },
+
+      }, //buttons
+
+    }); //uiImportWebpage.dialog
 
     $uiStartScreen.dialog({
       modal: true,
@@ -2340,6 +2361,7 @@
         var $this = $(this),
             value = $this.children( "input" ).val();
 
+        $this.children( "#project-url" ).attr( "disabled", false );
 
         $this.children("input").trigger("focus");
 
@@ -2399,7 +2421,7 @@
         }, //Start
 
         "Import Webpage": function () {
-          
+          $uiImportWebpage.dialog( "open" );
         }, //Import Webpage
 
       }
