@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="../js/popcorn.js"></script>
+    <script type="text/javascript" src="butter.layout.helper.js"></script>
+    <script type="text/javascript">
+
+      document.addEventListener('DOMContentLoaded', function (e) {
+
+        var layoutHelper = LayoutHelper();
+
+      }, false);
+
+    </script>
+    <style>
+      .plugin-container {
+        display: block;
+        float: left;
+        width: 250px;
+        min-width: 250px;
+        height: 250px;
+        min-height: 250px;
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="media-container">
+    </div>
+    <div id="plugin-container-1" class="butter-layout-target plugin-container"></div>
+    <div id="plugin-container-2" class="butter-layout-target plugin-container"></div>
+    <div id="plugin-container-3" class="butter-layout-target plugin-container"></div>
+    <div id="plugin-container-4" class="butter-layout-target plugin-container"></div>
+  </body>
+</html>

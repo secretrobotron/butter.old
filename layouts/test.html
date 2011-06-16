@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <script type="text/javascript" src="butter.layout.helper.js"></script>
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function (e) {
+
+        var iframe = document.getElementById('content');
+        iframe.addEventListener('load', function (e) {
+          var conn = LayoutHelperConnection({
+            object: iframe,
+          });
+        }, false);
+
+      }, false);
+    </script>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe id="content" src="default.html"></iframe>
+  </body>
+</html>
