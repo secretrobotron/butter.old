@@ -1,6 +1,7 @@
 <html>
   <head>
     <script type="text/javascript" src="butter.layout.helper.js"></script>
+    <script type="text/javascript" src="../js/popcorn-complete.js"></script>
     <script type="text/javascript">
       document.addEventListener('DOMContentLoaded', function (e) {
 
@@ -9,6 +10,12 @@
           var conn = LayoutHelperConnection({
             object: iframe,
           });
+
+          var win = iframe.contentWindow,
+              doc = iframe.contentDocument,
+              helper = win.LayoutHelpers[0],
+              media = helper.media[0];
+
         }, false);
 
       }, false);
